@@ -1,0 +1,83 @@
+// Edit this file to add more flowers. `bloom` controls how the SVG flower is drawn.
+export const featured = [
+  {
+    id: "dahlia",
+    name: "Dahlia",
+    family: "Asteraceae",
+    origin: "Mexico",
+    summary:
+      "The dahlia is a genus of bushy, tuberous, herbaceous perennial plants. It was declared the national flower of Mexico in 1963. The tubers were grown as a food crop by the Aztecs.",
+    scientific: "Dahlia pinnata",
+    bloomTime: "Midsummer to first frost",
+    height: "30 cm to 2 m",
+    facts: [
+      "There are about 42 species and over 57,000 registered cultivars.",
+      "The Aztecs ate the tubers and used hollow stems as water pipes.",
+      "Named in 1791 after Swedish botanist Anders Dahl.",
+      "Dahlias are not frost hardy; tubers are lifted and stored in cold regions.",
+    ],
+    care: "Full sun, rich well-drained soil, regular watering and staking for tall varieties.",
+    bloom: { layers: 6, petals: 13, radius: 150, width: 46, tip: 0.7, colors: ["#f4b183", "#e8809a", "#c8457a", "#8e2456"], center: "#5a1238", rotate: 0 },
+    stem: "#7d6a1c",
+  },
+  {
+    id: "gerbera",
+    name: "Gerbera",
+    family: "Asteraceae",
+    origin: "South America, Africa, Asia",
+    summary:
+      "Gerbera was named in honour of German botanist and medical doctor Traugott Gerber. It is very popular and widely used as a decorative garden plant or as cut flowers.",
+    scientific: "Gerbera jamesonii",
+    bloomTime: "Late spring to autumn",
+    height: "30 to 60 cm",
+    facts: [
+      "It is the fifth most used cut flower in the world.",
+      "The bloom is a composite: hundreds of tiny florets form the centre.",
+      "Gerberas were shown to remove indoor pollutants in NASA's Clean Air Study.",
+      "Native species come from South Africa; the Barberton daisy is the best known.",
+    ],
+    care: "Bright light, good drainage and a cool root zone. Keep leaves dry to avoid mildew.",
+    bloom: { layers: 2, petals: 34, radius: 160, width: 16, tip: 0.2, colors: ["#b58ae6", "#8a4fd0", "#6a2fb0"], center: "#2a1538", disc: 46, rotate: 0 },
+    stem: "#5f6657",
+  },
+  {
+    id: "chrysanthemum",
+    name: "Chrysanthemum",
+    family: "Asteraceae",
+    origin: "Eurasia and North America",
+    summary:
+      "Chrysanthemums, sometimes called mums or chrysanths, are flowering plants of the genus Chrysanthemum in the family Asteraceae.",
+    scientific: "Chrysanthemum morifolium",
+    bloomTime: "Autumn",
+    height: "30 to 90 cm",
+    facts: [
+      "Cultivated in China as a flowering herb since the 15th century BC.",
+      "Chrysanthemum tea is a traditional drink made from dried flowers.",
+      "The flower is the Imperial seal of Japan and has its own festival.",
+      "In some European countries it is placed on graves on All Saints' Day.",
+    ],
+    care: "Full sun, pinch back growing tips in early summer for bushier plants.",
+    bloom: { layers: 5, petals: 12, radius: 140, width: 40, tip: 0.8, colors: ["#ffb347", "#f28c1c", "#d9560b", "#8a2d06"], center: "#4a1a06", rotate: 8 },
+    stem: "#6f7a2a",
+  },
+  {
+    id: "sunflower",
+    name: "Sunflower",
+    family: "Asteraceae",
+    origin: "North America",
+    summary:
+      "The sunflower is an annual plant native to the Americas, grown for its edible seeds and oil. Young flower heads follow the sun across the sky.",
+    scientific: "Helianthus annuus",
+    bloomTime: "Summer to early autumn",
+    height: "1 to 3 m",
+    facts: [
+      "Indigenous peoples in North America domesticated it around 3000 BC.",
+      "A single head can hold 1,000 to 2,000 seeds.",
+      "Young buds track the sun; mature flowers face east.",
+      "It is the national flower of Ukraine.",
+    ],
+    care: "Full sun, deep roots need deep watering. Sow seeds directly after the last frost.",
+    bloom: { layers: 2, petals: 21, radius: 160, width: 30, tip: 0.5, colors: ["#ffd23f", "#f5a800"], center: "#3b2412", disc: 62, rotate: 0 },
+    stem: "#4e6b25",
+  },
+];
