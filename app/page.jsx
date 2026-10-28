@@ -23,6 +23,13 @@ export default function Home() {
     setTimeout(() => (lock.current = false), 900);
   }, [index]);
 
+  // Navbar "Browse" opens the search list
+  useEffect(() => {
+    const show = () => setBrowse(true);
+    window.addEventListener("flora:browse", show);
+    return () => window.removeEventListener("flora:browse", show);
+  }, []);
+
   // Wheel, mouse drag, touch swipe and arrow keys all switch flowers
   useEffect(() => {
     if (open || browse) return;
@@ -65,21 +72,21 @@ export default function Home() {
   }, [index, open, browse, goTo]);
 
   return (
-    <main className="relative min-h-screen select-none overflow-hidden bg-black" style={{ touchAction: "none" }}>
+    <main className="relative min-h-screen select-none overflow-x-hidden bg-black" style={{ touchAction: "pan-y" }}>
       {/* Center flower */}
       <div key={flower.id} className={`${dir > 0 ? "animate-bloom-down" : "animate-bloom-up"} pointer-events-none absolute inset-0 flex items-center justify-center`}>
         <FlowerMedia flower={flower} className="h-[78vh] w-auto max-w-[90vw] lg:translate-y-[100px]" />
       </div>
 
       {/* Content grid */}
-      <section className="relative z-10 grid min-h-screen grid-rows-[1fr_auto] px-8 pb-8 pt-28 sm:px-14 lg:grid-cols-[1fr_auto]">
+      <section className="relative z-10 grid min-h-screen grid-cols-[minmax(0,1fr)] grid-rows-[1fr_auto] px-6 pb-8 pt-24 sm:px-14 sm:pt-28 lg:grid-cols-[1fr_auto]">
         <div className="flex flex-col justify-center lg:max-w-[18rem]">
           <div key={flower.id + "t"} className="animate-rise">
             <p className="flex items-center gap-2 text-[11px] font-semibold">
               <span className="h-2 w-2 bg-white/30" /> {flower.family}
             </p>
-            <h1 className="mt-4 break-words font-display text-6xl leading-[1.05] sm:text-7xl">{flower.name}</h1>
-            <p className="mt-6 text-[12px] leading-relaxed text-white/80">{flower.summary}</p>
+            <h1 className="mt-4 break-words font-display text-4xl leading-[1.1] sm:text-5xl">{flower.name}</h1>
+            <p className="mt-6 break-words text-[12px] leading-relaxed text-white/80">{flower.summary}</p>
             <div className="mt-10 flex gap-10 text-[11px]">
               <div>
                 <p className="font-semibold">Origin</p>
@@ -94,7 +101,7 @@ export default function Home() {
         </div>
 
         {/* Right column */}
-        <div className="mt-10 flex w-full flex-col justify-center lg:mt-0 lg:w-72">
+        <div className="mt-10 flex w-full min-w-0 flex-col justify-center lg:mt-0 lg:w-72">
           <h2 className="text-[11px] font-semibold">Observe its beauty of Daisy family</h2>
           <p className="mt-3 text-[10px] leading-relaxed text-white/60">
             Asteraceae is a very large and widespread family of flowering plants. The family includes over 32,000
@@ -112,20 +119,13 @@ export default function Home() {
         </div>
 
         {/* Footer row */}
-        <div className="flex items-center justify-between lg:col-span-2 lg:pt-6">
-          <div className="flex items-center gap-5">
-          <button onClick={() => goTo(index - 1, -1)} aria-label="Previous flower" className="text-[11px] text-white/70 hover:text-white focus-visible:outline focus-visible:outline-1 focus-visible:outline-white">Prev</button>
-          <span className="min-w-[4.5rem] text-center text-[11px] tabular-nums text-white/70" aria-live="polite">
+        <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between lg:col-span-2 lg:mt-0 lg:pt-6">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-3 sm:gap-x-5">
+            <button onClick={() => goTo(index - 1, -1)} aria-label="Previous flower" className="text-[11px] text-white/70 hover:text-white focus-visible:outline focus-visible:outline-1 focus-visible:outline-white">Prev</button>
+            <span className="text-center text-[11px] tabular-nums text-white/70" aria-live="polite">
               {String(index + 1).padStart(3, "0")} / {flowers.length}
             </span>
-          <button onClick={() => goTo(index + 1, 1)} aria-label="Next flower" className="text-[11px] text-white/70 hover:text-white focus-visible:outline focus-visible:outline-1 focus-visible:outline-white">Next</button>
-          <button onClick={() => setBrowse(true)} className="ml-3 border border-white/30 px-3 py-1.5 text-[11px] hover:bg-white/10 focus-visible:outline focus-visible:outline-1 focus-visible:outline-white">Browse all</button>
-          </div>
-          <div className="flex items-center gap-5 text-[10px]">
-            <span className="font-semibold">Share on</span>
-            <a href="#" className="text-white/60 hover:text-white">Fb</a>
-            <a href="#" className="text-white/60 hover:text-white">Tw</a>
-            <a href="#" className="text-white/60 hover:text-white">Ig</a>
+            <button onClick={() => goTo(index + 1, 1)} aria-label="Next flower" className="text-[11px] text-white/70 hover:text-white focus-visible:outline focus-visible:outline-1 focus-visible:outline-white">Next</button>
           </div>
         </div>
       </section>
